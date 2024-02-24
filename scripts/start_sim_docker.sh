@@ -7,12 +7,17 @@ USE_GPU=0
 
 # Help message
 usage() {
-  echo "Usage: $0 [-u <use_gpu>]"
+  echo "Usage: $0 [-u <use_gpu>] [-c image_name]"
   echo "Options:"
+  echo "  -c image_name     Specify the name of docker image."
   echo "  -u <use_gpu>  Set GPU usage (0 - disable, 1 - enable, default: 0)"
   echo "  -h             Display this help message"
   exit 1
 }
+
+# Default values
+image_name=""
+
 
 # Process command-line arguments
 while getopts "u:h" opt; do
@@ -22,6 +27,9 @@ while getopts "u:h" opt; do
       ;;
     h)
       usage
+      ;;
+    c)
+      image_name="$OPTARG"
       ;;
     \?)
       echo "Invalid option: -$OPTARG" >&2
@@ -47,7 +55,7 @@ CONTAINER_ID=$(docker run -it --rm -d --privileged \
     --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
     --volume="$SCRIPT_DIR/..":/app \
     $RUNTIME_FLAG \
-    px4_sim )
+    $image_name )
 
 # Run gazebo
 docker exec -it $CONTAINER_ID /bin/bash -c "source /opt/ros/noetic/setup.bash && \
