@@ -1,0 +1,14 @@
+image: docker:latest
+services:
+  - docker:dind
+stages:
+  - build-sim-docker
+build-sim-docker:
+  stage: build-sim-docker
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - apk add --no-cache make
+    - apk add --no-cache git
+    - docker build -t $CI_REGISTRY_IMAGE/px4_simulation:latest .
+    - docker push $CI_REGISTRY_IMAGE/px4_simulation:latest 
+  when: manual
