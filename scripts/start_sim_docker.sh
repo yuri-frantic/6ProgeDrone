@@ -20,16 +20,16 @@ image_name=""
 
 
 # Process command-line arguments
-while getopts "u:h" opt; do
+while getopts "u:c:h" opt; do
   case $opt in
     u)
       USE_GPU=$OPTARG
       ;;
+    c)
+      image_name=$OPTARG
+      ;;
     h)
       usage
-      ;;
-    c)
-      image_name="$OPTARG"
       ;;
     \?)
       echo "Invalid option: -$OPTARG" >&2
