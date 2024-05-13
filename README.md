@@ -73,6 +73,12 @@ export GAZEBO_MODEL_PATH=/app/sim/models:/PX4-Autopilot/Tools/sitl_gazebo/models
 ```
 ### Запуск симулятора
 
+Установим необходимые зависимости:
+
+```bash
+sudo apt install xterm -y
+```
+
 Для запуска симулятора c моделью БЛА воспользуемся следующим скриптом:
 
 

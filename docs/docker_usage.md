@@ -60,3 +60,25 @@ docker build -t px4_simulation:latest .
 ```bash
 ./start_sim_docker.sh -c px4_simulation:latest
 ```
+
+---
+
+Помимо этого можно использовать уже заранее собранный контейнер из gitlab.
+
+Для этого потребуется войти в соответствующий registry:
+
+```bash
+docker login registry.gitlab.com
+```
+
+Далее запустим контейнер:
+
+```bash
+./start_sim_docker.sh -c registry.gitlab.com/drone-programming/skillbox/module_6/px4_simulation:latest
+```
+
+---
+
+Данный вариант является наиболее предпочтительным, так как не требует сборки контейнера.
+
+---
