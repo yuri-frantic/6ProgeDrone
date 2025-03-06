@@ -37,12 +37,12 @@ include_directories(
 add_executable(uav_circle_fly_example src/uav_circle_fly_example.cpp)
 add_executable(visual_navigation_node src/visual_navigation_node.cpp)
 # пример с полетом БЛА(взаимодействие с аппаратом, управление целевым положением)
-#add_executable(go_to_example examples/simple_flight_example.cpp)
+add_executable(visual_navigation_node_test src/visual_navigation_node_test.cpp)
 
 # libraris link for visual navigation system
 #target_link_libraries(control_sys_lib  ${catkin_LIBRARIES})
 target_link_libraries(visual_navigation_node PRIVATE Eigen3::Eigen ${OpenCV_LIBS} ${catkin_LIBRARIES})
 target_link_libraries(uav_circle_fly_example ${catkin_LIBRARIES})
-#target_link_libraries(uav_controller_node ${catkin_LIBRARIES})
+target_link_libraries(visual_navigation_node_test ${catkin_LIBRARIES})
 #target_link_libraries(go_to_example  ${catkin_LIBRARIES})
 
