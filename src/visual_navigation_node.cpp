@@ -190,7 +190,7 @@ private:
     
     	for (int i = 0; i < 200; i++) {
     	    if (ros::ok()) {
-              std::cout << "X=" << current_position_x << " Y=" << current_position_y << " Z=" << current_position_z << " | " << std::endl;
+              //std::cout << "X=" << current_position_x << " Y=" << current_position_y << " Z=" << current_position_z << " | " << std::endl;
     
               //std::cout << "!!!!" << std::endl;
               local_pos_pub_.publish(setpoint_); 
@@ -258,7 +258,7 @@ private:
         setpoint_.velocity.y = target_velocity_y;   //setpoint_.velocity.y = target_velocity_y;
         setpoint_.velocity.z = target_velocity_z;
 
-        std::cout << "Xd=" << desired_position_x << " Yd=" << desired_position_y << " Zd=" << desired_position_z << " | Xc=" << current_position_x << " Yc=" << current_position_y << " Zc=" << current_position_z << " | Vx=" << target_velocity_x << " Vy=" << target_velocity_y << " Vz=" << target_velocity_z << std::endl;     
+        //std::cout << "Xd=" << desired_position_x << " Yd=" << desired_position_y << " Zd=" << desired_position_z << " | Xc=" << current_position_x << " Yc=" << current_position_y << " Zc=" << current_position_z << " | Vx=" << target_velocity_x << " Vy=" << target_velocity_y << " Vz=" << target_velocity_z << std::endl;     
        
     }
     
