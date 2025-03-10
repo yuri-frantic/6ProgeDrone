@@ -56,8 +56,8 @@ public:
 
     	// Определение маркеров
     	cv::Ptr<cv::aruco::Dictionary> dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_4X4_100);
-    	float markerSize = 0.114;
-    	float distanceBetweenMarkers = 0.362; // Расстояние между маркерами в метрах
+    	float markerSize = 0.3;
+    	float distanceBetweenMarkers = 0.7; // Расстояние между маркерами в метрах
     	cv::Ptr<cv::aruco::Board> board = cv::aruco::GridBoard::create(10, 10, markerSize, distanceBetweenMarkers, dictionary);
     	
     	
@@ -89,8 +89,8 @@ public:
   	geometry_msgs::PoseStamped local_pos_msg;
 
   	// Преобразование в систему координат БПЛА
-  	current_position_x = tvec[1]*2 - 3.5; // X координата
-  	current_position_y = tvec[0]*2 + 6; // Y координата
+  	current_position_x = tvec[1]-4.5; // X координата
+  	current_position_y = tvec[0]+4.5; // Y координата
   	current_position_z = tvec[2]; // Z координата
   	
 
@@ -122,7 +122,7 @@ public:
         //auto start_time = ros::Time::now();
         
         
-        //Взлет на 15 метров.
+        //Взлет на 3 метра.
         takeoff();
               
         
@@ -172,7 +172,7 @@ private:
     geometry_msgs::PoseStamped current_pose_;
     ros::AsyncSpinner spinner_;
     
-    cv::Mat cameraMatrix = (cv::Mat_<double>(3, 3) << 1000, 0, 640, 0, 1000, 480, 0, 0, 1); // Примерные параметры камеры
+    cv::Mat cameraMatrix = (cv::Mat_<double>(3, 3) << 476.7, 0.0, 400.5, 0.0, 476.7, 400.5, 0.0, 0.0, 1.0); // Примерные параметры камеры
     cv::Mat distCoeffs = cv::Mat::zeros(5, 1, CV_64F); // Предполагаем, что искажений нет
 
     void takeoff() {
@@ -188,7 +188,7 @@ private:
         | mavros_msgs::PositionTarget::IGNORE_AFX | mavros_msgs::PositionTarget::IGNORE_AFY | mavros_msgs::PositionTarget::IGNORE_AFZ
         | mavros_msgs::PositionTarget::IGNORE_YAW_RATE;
     
-    	for (int i = 0; i < 200; i++) {
+    	for (int i = 0; i < 300; i++) {
     	    if (ros::ok()) {
               //std::cout << "X=" << current_position_x << " Y=" << current_position_y << " Z=" << current_position_z << " | " << std::endl;
     
